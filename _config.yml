@@ -1,0 +1,12 @@
+# Site settings
+title: Front End Collision
+email: joshua.a.beam@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Website and blog of full-stack JavaScript developer, Joshua Beam. Powered by Jekyll :)
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+twitter_username: joshbeam92
+github_username:  joshbeam
+
+# Build settings
+markdown: kramdown
