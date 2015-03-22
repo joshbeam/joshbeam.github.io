@@ -3,7 +3,7 @@ title: Front End Collision
 email: joshua.a.beam@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Website and blog of full-stack JavaScript developer, Joshua Beam.
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "http://joshbeam.github.io/" # the subpath of your site, e.g. /blog/
 url: "http://joshbeam.github.io" # the base hostname & protocol for your site
 twitter_username: joshbeam92
 github_username:  joshbeam
