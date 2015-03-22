@@ -1,8 +1,10 @@
 <header class="site-header">
 
   <div class="wrapper">
-
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    <a class="site-title" href="{{ site.baseurl }}/">
+      <img class="profile-picture" src="{{ "/images/me.jpg" | prepend: site.baseurl}}" />
+      {{ site.title }}
+    </a>
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
