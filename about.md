@@ -8,7 +8,7 @@ permalink: /about/
 
 ##Profiles
 - <a href="http://careers.stackoverflow.com/joshbeam">StackOverflow Careers 2.0</a>
-- <a href="https://github.com/joshbeam/">GitHub</a> (lots of projects here)
+- <a href="https://github.com/joshbeam/">GitHub</a>
 
 ##Projects
 - <a href="http://joshbeam.github.io/Basket">Basket</a>
