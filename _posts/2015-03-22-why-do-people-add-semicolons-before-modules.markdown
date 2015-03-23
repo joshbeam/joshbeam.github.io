@@ -51,7 +51,7 @@ So, when we try doing the above example with semicolons **at the beginning *and*
 
 The cool thing is, **the above doesn't throw any errors. In fact, <a href="http://jshint.com/">JSHint</a> won't yell at you either.**
 
-Why is this? Check out the <a href="">MDN article on `empty`</a>:
+Why is this? Check out the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/Empty">MDN article on `empty`</a>:
 
 > An **empty** statement is used to provide no statement, although the JavaScript syntax would expect one.
 
