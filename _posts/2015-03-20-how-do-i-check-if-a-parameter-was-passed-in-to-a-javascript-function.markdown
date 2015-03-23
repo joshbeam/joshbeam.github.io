@@ -3,6 +3,8 @@ layout: post
 title:  "How do I check if a parameter was passed in to a function in JavaScript?"
 date:   2015-03-20 22:39:00
 categories: javascript
+author: Josh Beam
+comments: true
 ---
 
 ##What's a parameter?
@@ -91,7 +93,7 @@ This brings us to a very important logical operator, the exlamation point `!` (a
 
 You'll notice above that we are using the strict identity operator `===`. This is okay, because the `!` operator coerces the values on the left side of the equation to a boolean value. So really when we say `!1 === false`, we're actually saying `false === false`. In other words, `false` *does* have the identity of `false`.
 
-#The "double not" (or just two "not" operators &emdash; these are also all true)
+#The "double not" (or just two "not" operators &mdash; these are also all true)
 {% highlight javascript %}
 	
 /*

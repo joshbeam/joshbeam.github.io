@@ -3,6 +3,8 @@ layout: post
 title:  "What is hoisting in JavaScript?"
 date:   2015-03-20 17:31:00
 categories: javascript
+author: Josh Beam
+comments: true
 ---
 ##Hoisting is small concept that's pretty important
 

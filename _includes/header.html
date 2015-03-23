@@ -1,9 +1,15 @@
 <header class="site-header">
 
   <div class="wrapper">
-    <a class="site-title" href="{{ site.baseurl }}/">
+    <div class="site-title">
       <img class="profile-picture" src="{{ "/images/me.jpg" | prepend: site.baseurl}}" />
-      {{ site.title }}
+      
+      <div>
+      <a href="{{site.baseurl}}">{{site.title}}</a>
+      <small>{{site.subtitle}}</small>
+      </div>
+    </div>
+    <a class="site-title" href="{{ site.baseurl }}/">
     </a>
 
     <nav class="site-nav">

@@ -7,30 +7,46 @@
     // Positioning context for the mobile navigation icon
     position: relative;
     padding: 2rem;
-}
-
-.profile-picture {
-    float: left;
-    @include border-radius(100%);
-    width: 50px;
-    margin: 0 .5rem 0 0;
+    @include box-shadow(0, 0, 20px, #eeb9a9);
 }
 
 .site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    padding: .25rem;
     float: left;
 
-    &,
-    &:visited {
+    a {
+        font-size: 2rem;
         color: $grey-color-dark;
+        letter-spacing: -1px;
+        margin: 0;
+        padding: 0;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
-    &:hover {
-        text-decoration: underline;
+    small {
+        display: block;
+        color: lighten($grey-color-dark,20%);
+        margin: -5px 0 0 0;
+        padding: 0;
+    }
+
+    div {
+        float: right;
+    }
+
+    .profile-picture {
+        float: left;
+        @include border-radius(100%);
+        width: 70px;
+        margin: 0 .5rem 0 0;
+        height: 100%;
+        @include box-shadow(0, 0, 20px, #a9deee);
+
+        @include media-query($on-palm) {
+            display: none;
+        }
     }
 }
 
@@ -43,10 +59,10 @@
     }
 
     .page-link {
-        color: $text-color;
+        color: lighten($text-color,25%);
         line-height: $base-line-height;
         background: rgba(255,255,255,.5);
-        padding: .5rem;
+        padding: .75rem;
         @include border-radius(10px);
 
         // Gaps between nav items, but not on the first one
@@ -65,7 +81,8 @@
         top: 10px;
         right: 10px;
         background-color: $background-color;
-        border: 1px solid $grey-color-light;
+        //border: 1px solid $grey-color-light;
+        @include box-shadow(0,0,20px,$grey-color-dark);
         @include border-radius(5px);
         text-align: right;
 
@@ -119,6 +136,7 @@
 .site-footer {
     border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
+    background: $grey-color-extralight;
 }
 
 .footer-heading {
@@ -188,6 +206,7 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+    background: $background-color;
 }
 
 .page-heading {
