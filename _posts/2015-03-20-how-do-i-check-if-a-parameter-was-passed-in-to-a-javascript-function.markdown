@@ -8,8 +8,7 @@ comments: true
 ---
 
 ##What's a parameter?
-<!--excerpt.start-->
-A parameter can also be called an argument. It's the thing passed into a function that you do something with<!--excerpt.end-->:
+A parameter can also be called an argument. It's the thing passed into a function that you do something with:
 
 {% highlight javascript %}
 	
@@ -197,7 +196,7 @@ console.log(!!c); // ==> ReferenceError! Your program is dead.
 
 ##Best Practice
 
-I think in this circumstance, **the best practice depends on however you define "existence" in the context of your specific function**. This means that you have to take into consideration the concepts of truthiness, the use of the `typeof` operator, the principle of declared vs. defined, etc.
+I think in this circumstance, <!--excerpt.start-->**the best practice depends on however you define "existence" in the context of your specific function**. This means that you have to take into consideration the concepts of truthiness, the use of the `typeof` operator, the principle of declared vs. defined, etc.<!--excerpt.end-->
 
 Keep in mind, too, that there are many ways to check the types of of variables you encounter. For example:
 {% highlight javascript %}
