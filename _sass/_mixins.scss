@@ -21,7 +21,7 @@
   background: linear-gradient(to right, $from 0%, $to $stop);
 
   /* IE6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='{$from}', endColorstr='{$to}',GradientType=1 );
 }
 
 @mixin border-radius($radius) {
