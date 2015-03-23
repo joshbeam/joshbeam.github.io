@@ -30,7 +30,7 @@ If you didn't know, Jekyll uses <a href="http://liquidmarkup.org/">Liquid</a> fo
 
 <!-- _posts/some-random-post.html -->
 <p>
-Here's all my content, and <!--excerpt.start-->here's where I want my summary to begin, and this is where I want it to end<!--exceript.end-->.
+Here's all my content, and <!--excerpt.start-->here's where I want my summary to begin, and this is where I want it to end<!--excerpt.end-->.
 </p>
 {% endhighlight %}
 
