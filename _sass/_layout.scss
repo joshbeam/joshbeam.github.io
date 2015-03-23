@@ -221,6 +221,8 @@
         margin-bottom: $spacing-unit;
         border-bottom: 1px solid $grey-color-light;
         @extend %clearfix;
+        @include box-shadow(0,0,20px,$grey-color-light);
+        padding: 1rem;
 
         .post-excerpt {
             color: lighten($grey-color-dark,20%);
@@ -259,9 +261,21 @@
     font-size: 42px;
     letter-spacing: -1px;
     line-height: 1;
+    font-weight: bold;
 
     @include media-query($on-laptop) {
         font-size: 36px;
+    }
+}
+
+.view-all-link {
+    border: 1px solid $grey-color-light;
+    padding: 1rem;
+    margin: 1rem 0;
+    display: inline-block;
+
+    &:hover {
+        background: $grey-color-light;
     }
 }
 
@@ -291,4 +305,15 @@
             font-size: 18px;
         }
     }
+}
+
+.twitter-plug {
+    @include border-radius(10px);
+    background: lighten($brand-color-complement,10%);
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.ask-for-comments {
+    margin: 2rem 0;
 }

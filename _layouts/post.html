@@ -2,7 +2,7 @@
 layout: default
 ---
 <div class="post">
-  <a href="/">&lArr; View All</a>
+  <a href="/" class="view-all-link">&lArr; View All</a>
   <br><br>
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
@@ -13,16 +13,17 @@ layout: default
     {{ content }}
   </article>
 
-  <a href="/">&lArr; View All</a>
-  <br><br>
+  <a href="/" class="view-all-link">&lArr; View All</a>
 
-	<hr><br>
+  <div class="twitter-plug">{% include twitter-plug.html %}</div>
 
-  <div>
+	<hr>
+
+  <div class="ask-for-comments">
   	<em>What do you think? Did I get something wrong, or did I get something right? Comment below to let me and everyone else know.</em>
   </div>
+
   {% if page.comments %}
-  <br><br>
   <div id="disqus_thread"></div>
   <script type="text/javascript">
       //var disqus_developer = 1;
