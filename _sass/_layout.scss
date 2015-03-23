@@ -318,3 +318,57 @@
 .ask-for-comments {
     margin: 2rem 0;
 }
+
+/*
+    Archive
+*/
+.archive-list {
+    > li {
+        padding: 0.5em;
+        margin: 0 0 1em 0;
+        @include box-shadow(0,0,10px,darken($grey-color-light,10%));        
+    }
+
+    .archive-list-meta {
+        margin-right: 1em;
+        color: $grey-color-dark;
+    }
+}
+
+/*
+    Search
+*/
+.search > input {
+    font-size: 16px;
+    color: $grey-color-dark;
+}
+
+.search-box {
+    border: 1px solid $grey-color-light;
+    background: #fff;
+    padding: 1em;
+    @include box-shadow(0,0,20px,$grey-color-dark);
+    &:hover {
+        background: $grey-color-light;
+    }
+}
+
+.search-button {
+    @extend .search-box;
+    cursor: pointer;
+
+    &:hover {
+        border: 1px solid $grey-color-dark;
+        background: $grey-color-dark;
+        color: #fff;
+    }
+}
+
+.search-results-count {
+    color: $grey-color-dark;
+    margin: 0 0 1em 0;
+}
+
+.search-results {
+    @extend .archive-list;
+}

@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+comments: false
 ---
 
 Josh is a full-stack JavaScript enthusiast developer with 3+ years experience developing applications using technologies like AngularJS, MongoDB, Node.js, and HTML/CSS.
