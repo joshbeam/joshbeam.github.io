@@ -17,14 +17,14 @@ Josh is a full-stack JavaScript enthusiast developer with 3+ years experience de
 #Projects
 <dl>
 	<dt><a href="http://joshbeam.github.io/Basket">Basket</a></dt>
-	<dd>A little app designed with my AngularJS plug-in <a href="http://github.com/joshbeam/angular-state-manager">angular-state-manager</a></dd>
+	<dd>A demo app designed mobile first to act as a shopping list manager for families, friends, etc. Designed with my AngularJS plug-in <a href="http://github.com/joshbeam/angular-state-manager">angular-state-manager</a></dd>
 
 	<dt><a href="http://periodictable.herokuapp.com">Periodic Table of Elements</a></dt>
 	<dd>Meant to help people visually understand the trends of the periodic table without having to think about it too hard</dd>
 
 <dt><a href="https://whiteboardapp.herokuapp.com">Dwight</a></dt>
-	<dd>Application designed using the MEAN stack (MongoDB, Express, AngularJS, and Node.js)</dd>
+	<dd>A new kind of "todo list" application that gives the user a lot of freedom in presentation. Designed using the MEAN stack (MongoDB, Express, AngularJS, and Node.js)</dd>
 
 <dt><a href="http://www.petitjs.com">Petit</a></dt>
-	<dd>MAMP Stack</dd>
+	<dd>A little JavaScript framework. Only 10 methods. Website uses the MAMP stack.</dd>
 </dl>

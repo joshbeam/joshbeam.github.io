@@ -8,8 +8,8 @@ comments: true
 ---
 
 ##What's a parameter?
-
-A parameter can also be called an argument. It's the thing passed into a function that you do something with:
+<!--excerpt.start-->
+A parameter can also be called an argument. It's the thing passed into a function that you do something with<!--excerpt.end-->:
 
 {% highlight javascript %}
 	

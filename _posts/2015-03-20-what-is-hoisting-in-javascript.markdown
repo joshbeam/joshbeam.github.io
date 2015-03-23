@@ -8,7 +8,7 @@ comments: true
 ---
 ##Hoisting is small concept that's pretty important
 
-Hoisting is a concept that really defines a fundamental principle of JavaScript: **there's no such thing as *block scope***.
+<!--excerpt.start-->Hoisting is a concept that really defines a fundamental principle of JavaScript: **there's no such thing as *block scope***.<!--excerpt.end-->
 
 What does that mean? Well, we know there's a thing called *function scope*:
 

@@ -55,7 +55,7 @@ Of course, the obvious problems with this are:
 
 For <a href="http://github.com/joshbeam/angular-state-manager">angular-state-manager</a>, I utilized a global object called `stateManagerDependencies`, or something along that line, to attach all of my modules to that would eventually go into the main `stateManager` module.
 
-The purpose of this was to only have one object (the `stateManagerDependencies` object) be attached to the global scope (i.e. `window` object), and that would hold all of the dependencies, as opposed to attaching each dependency to the global scope at the end of each module.
+<!--excerpt.start-->The purpose of this was to only have one object (the `stateManagerDependencies` object) be attached to the global scope (i.e. `window` object), and that would hold all of the dependencies, as opposed to attaching each dependency to the global scope at the end of each module.<!--excerpt.end-->
 
 {% highlight javascript %}
 // dependencies.js

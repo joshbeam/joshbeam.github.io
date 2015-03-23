@@ -219,6 +219,20 @@
 
     > li {
         margin-bottom: $spacing-unit;
+        border-bottom: 1px solid $grey-color-light;
+        @extend %clearfix;
+
+        .post-excerpt {
+            color: lighten($grey-color-dark,20%);
+        }
+
+        .post-tags {
+            color: lighten($grey-color-dark,20%);
+            font-style: italic;
+            float: right;
+            font-size: $base-font-size/1.5;
+            @extend %clearfix;
+        }
     }
 }
 
