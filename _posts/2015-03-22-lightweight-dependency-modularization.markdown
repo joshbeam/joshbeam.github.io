@@ -9,7 +9,7 @@ comments: true
 
 ##A common approach
 
-A common approach when utilizing the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">module pattern</a> or something close to it, is to attach the end object to the `window`, or return the object inside some sort of local variable to namespace you're module.
+A common approach when utilizing the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">module pattern</a> or something close to it, is to attach the end object to the `window`, or return the object inside some sort of local variable to create a namespace for your module.
 
 So you might end up having something like this:
 
