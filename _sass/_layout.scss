@@ -7,7 +7,7 @@
     // Positioning context for the mobile navigation icon
     position: relative;
     padding: 2rem;
-    @include box-shadow(0, 0, 20px, #eeb9a9);
+    @include box-shadow(0, 0, 20px, $brand-color-opposite);
 }
 
 .site-title {
@@ -219,9 +219,10 @@
 
     > li {
         margin-bottom: $spacing-unit;
-        border-bottom: 1px solid $grey-color-light;
+        //border-bottom: 1px solid $grey-color-light;
+        border-bottom: 2px solid $brand-color-opposite;
         @extend %clearfix;
-        @include box-shadow(0,0,20px,$grey-color-light);
+        @include box-shadow(0,0,20px,darken($grey-color-light,10%));
         padding: 1rem;
 
         .post-excerpt {
