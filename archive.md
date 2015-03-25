@@ -4,7 +4,7 @@ comments: false
 title: Archive
 permalink: /archive/
 ---
-<h1 class="page-heading">Posts ({{site.posts | size}})</h1>
+{% include total-posts.html %}
 <ul class="unstyled archive-list">
 {% for post in site.posts %}
 	<li>

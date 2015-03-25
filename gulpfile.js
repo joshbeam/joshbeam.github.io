@@ -6,8 +6,10 @@ var gulp = require('gulp');
 
 gulp.task('js',function() {
 	return gulp.src([
+		'js/src/utils/*.js',
 		'bower_components/jquery/dist/jquery.js',
-		'js/src/search.js'
+		'js/src/search.js',
+		'js/src/lib/*.js'
 		])
 		.pipe(concat('scripts.js'))
 		.pipe(gulp.dest('js/dist'))

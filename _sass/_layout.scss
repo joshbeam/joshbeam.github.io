@@ -348,8 +348,13 @@
     background: #fff;
     padding: 1em;
     @include box-shadow(0,0,20px,$grey-color-dark);
+    box-sizing: border-box;
     &:hover {
         background: $grey-color-light;
+    }
+
+    @include media-query($on-palm) {
+        width: 100%;
     }
 }
 

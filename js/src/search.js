@@ -1,4 +1,4 @@
-$(function() {
+$(function(utils) {
 	var query = (function() {
 		var q;
 
@@ -25,9 +25,11 @@ $(function() {
 				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));				
 			}
 		}
-	})();
+	})(),
+	site = location.protocol + "//" + location.host, $searchBox = $('.search-box'),
+	utils = utils;
 
-	var site = location.protocol + "//" + location.host, $searchBox = $('.search-box');
+	console.log(utils);
 
 	$('.search-button').on('click',function() {
 		query.set($searchBox.val().trim()).go();
@@ -43,44 +45,44 @@ $(function() {
 		query.set(query.retrieve('query').trim().split(' '));
 
 		$.get(site+'/posts.json',function(data) {
-			var queryMatch, posts = [], $results = $('.search-results'), $resultsCount = $('.search-results-count'), currentPost;
+			var searchIndex, results, $resultsCount = $('.search-results-count'), $results = $('.search-results'), totalScore = 0, percentOfTotal;
 
-			$results.html('');
-			$resultsCount.html('');
-
-			$.each(data,function(i,post) {
-				currentPost = {};
-				currentPost.url = post.url;
-				currentPost.title = post.title;
-
-				for(var key in post) {
-					/*
-						{
-							title:
-							url:
-							//etc.
-						}
-					*/
-					if(post[key].constructor === Array && key !== 'url') {
-						$.each(post[key],function(i,item) {
-							queryMatch = query.get().filter(function(qItem) {
-								return qItem === item;
-							});
-
-							if(queryMatch.length > 0) {
-								posts.push(currentPost);
-								return false;
-							}
-						});
-					}
-				}
+			searchIndex = lunr(function() {
+				this.field('title');
+				this.field('category');
+				this.field('content');
+				this.ref('url');
+				this.field('date');
+			});
+			
+			$.each(data,function(i,item) {
+				searchIndex.add(item);
 			});
 
-			$resultsCount.append(posts.length + (posts.length === 1 ? ' result' : ' results') + ' for "' + query.get().join(' ') +'"');
+			results = searchIndex.search(query.get());
 
-			$.each(posts, function(i,post) {
-				$results.append('<li><a href="'+ location.protocol + '//' + location.host + post.url +'">'+post.title+'</a></li>');
+			for(result in results) {
+				results[result].title = data.filter(function(post) {
+					return post.url === results[result].ref;
+				})[0].title;
+			}
+
+			$resultsCount.append(results.length + (results.length === 1 ? ' result' : ' results') + ' for "' + query.get().join(' ') +'"');
+
+			$.each(results, function(i, result) {
+				totalScore+=result.score;
+			});
+
+			$.each(results, function(i,result) {
+				percentOfTotal = result.score/totalScore;
+
+				$results.append('<li><a href="'+ site + result.url +'">'+result.title+'</a></li>');
+				$results.children('li').last().css({
+					'border-left': '20px solid '+utils.shade('#ffffff',-percentOfTotal)
+				});
 			});
 		});
 	}
-});
+
+	return this;
+}(utils));
