@@ -1,12 +1,46 @@
 $(function() {
-	var site = location.protocol + "//" + location.host, query;
+	var query = (function() {
+		var q;
+
+		return {
+			set: function(val) {
+				q = val;
+				return this;
+			},
+			get: function() {
+				return q;
+			},
+			go: function() {
+				if(typeof q !== 'undefined' && typeof q === 'string') {
+					document.location.href="/search/?query="+q;
+				} else {
+					return;
+				}
+			},
+			//http://stackoverflow.com/a/901144/2714730
+			retrieve: function(name) {
+				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+				    results = regex.exec(location.search);
+				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));				
+			}
+		}
+	})();
+
+	var site = location.protocol + "//" + location.host, $searchBox = $('.search-box');
 
 	$('.search-button').on('click',function() {
-		document.location.href="/search/?query="+$('.search-box').val().trim();
+		query.set($searchBox.val().trim()).go();
 	});
 
+	$searchBox.on('keydown',function(e) {
+		if(e.keyCode == 13) {
+			query.set($searchBox.val().trim()).go();
+		}
+	});	
+
 	if(/query/.test(location.search) && /search/.test(location.pathname)) {
-		query = getParameterByName('query').trim().split(' ');
+		query.set(query.retrieve('query').trim().split(' '));
 
 		$.get(site+'/posts.json',function(data) {
 			var queryMatch, posts = [], $results = $('.search-results'), $resultsCount = $('.search-results-count'), currentPost;
@@ -29,7 +63,7 @@ $(function() {
 					*/
 					if(post[key].constructor === Array && key !== 'url') {
 						$.each(post[key],function(i,item) {
-							queryMatch = query.filter(function(qItem) {
+							queryMatch = query.get().filter(function(qItem) {
 								return qItem === item;
 							});
 
@@ -42,19 +76,11 @@ $(function() {
 				}
 			});
 
-			$resultsCount.append(posts.length + (posts.length === 1 ? ' result' : ' results') + ' for "' + query.join(' ') +'"');
+			$resultsCount.append(posts.length + (posts.length === 1 ? ' result' : ' results') + ' for "' + query.get().join(' ') +'"');
 
 			$.each(posts, function(i,post) {
 				$results.append('<li><a href="'+ location.protocol + '//' + location.host + post.url +'">'+post.title+'</a></li>');
 			});
 		});
-	}
-
-	//http://stackoverflow.com/a/901144/2714730
-	function getParameterByName(name) {
-		name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-		var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-		    results = regex.exec(location.search);
-		return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 	}
 });
