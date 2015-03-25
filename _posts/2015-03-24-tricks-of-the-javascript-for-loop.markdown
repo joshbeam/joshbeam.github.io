@@ -21,7 +21,7 @@ The code above obviously just increases `i`, starting at 0 and ending at the len
 
 ##How do you declare the loop?
 
-There's frequently discussion on how to best write a `for` loop. There are some performance issues depending on how you write it (see this <a href="http://stackoverflow.com/a/6974417/2714730>StackOverflow question</a>), and I think a lot of it comes down to two things at the end: readability and personal style.
+There's frequently discussion on how to best write a `for` loop. There are some performance issues depending on how you write it (see this <a href="http://stackoverflow.com/a/6974417/2714730">StackOverflow question</a>), and I think a lot of it comes down to two things at the end: readability and personal style.
 
 #Several ways:
 {% highlight javascript %}
