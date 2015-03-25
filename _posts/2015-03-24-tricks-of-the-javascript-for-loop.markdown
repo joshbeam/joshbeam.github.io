@@ -218,7 +218,7 @@ We could even put it in a module:
 ;(function(win) {
 	var utils = {
 		forEach: forEach
-	}
+	};
 
 	function forEach(arr,fn) {
 		var i = 0, len = arr.length;
