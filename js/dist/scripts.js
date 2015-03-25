@@ -9218,94 +9218,107 @@ return jQuery;
 
 }));
 
-$(function(utils) {
-	var query = (function() {
-		var q;
+;(function(global,$) {
 
-		return {
-			set: function(val) {
-				q = val;
-				return this;
-			},
-			get: function() {
-				return q;
-			},
-			go: function() {
-				if(typeof q !== 'undefined' && typeof q === 'string') {
-					document.location.href="/search/?query="+q;
-				} else {
-					return;
-				}
-			},
-			//http://stackoverflow.com/a/901144/2714730
-			retrieve: function(name) {
-				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-				    results = regex.exec(location.search);
-				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));				
+	Query.prototype = {
+		set: function(val) {
+			this.q = val;
+			return this;
+		},
+		goToLocation: function(route) {
+			if(typeof this.q !== 'undefined' && typeof this.q === 'string') {
+				document.location.href=route+'/?query='+this.q;
+			} else {
+				return;
 			}
+		},
+		get: function() {
+			return this.q;
+		},
+		setFromURL: function(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			    results = regex.exec(location.search);
+
+			this.q = results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+
+			return this;				
+		},
+		getJSON: function(file) {
+			return $.get(file);
 		}
-	})(),
+	};
+
+	function Query(q) {
+		if(typeof q !== 'undefined' && typeof q === 'string') {
+			this.q = q;
+		}
+	}
+
+	global.Query = Query;
+})(this,$);
+$(function(utils,Query) {
+	var query = new Query(),
 	site = location.protocol + "//" + location.host, $searchBox = $('.search-box'),
 	utils = utils;
 
-	console.log(utils);
-
 	$('.search-button').on('click',function() {
-		query.set($searchBox.val().trim()).go();
+		query.set($searchBox.val().trim()).goToLocation('/search');
 	});
 
 	$searchBox.on('keydown',function(e) {
 		if(e.keyCode == 13) {
-			query.set($searchBox.val().trim()).go();
+			query.set($searchBox.val().trim()).goToLocation('/search');
 		}
 	});	
 
 	if(/query/.test(location.search) && /search/.test(location.pathname)) {
-		query.set(query.retrieve('query').trim().split(' '));
 
-		$.get(site+'/posts.json',function(data) {
-			var searchIndex, results, $resultsCount = $('.search-results-count'), $results = $('.search-results'), totalScore = 0, percentOfTotal;
+		query
+			.setFromURL('query')
+			.getJSON('/posts.json')
+			.done(function(data) {
+				var searchIndex, results, $resultsCount = $('.search-results-count'), $results = $('.search-results'), totalScore = 0, percentOfTotal;
 
-			searchIndex = lunr(function() {
-				this.field('title');
-				this.field('category');
-				this.field('content');
-				this.ref('url');
-				this.field('date');
-			});
-			
-			$.each(data,function(i,item) {
-				searchIndex.add(item);
-			});
+				searchIndex = lunr(function() {
+					this.field('title');
+					this.field('category');
+					this.field('content');
+					this.ref('url');
+					this.field('date');
+				});
+				
+				$.each(data,function(i,item) {
+					searchIndex.add(item);
+				});
 
-			results = searchIndex.search(query.get());
+				results = searchIndex.search(query.get());
 
-			for(result in results) {
-				results[result].title = data.filter(function(post) {
-					return post.url === results[result].ref;
-				})[0].title;
-			}
+				for(result in results) {
+					results[result].title = data.filter(function(post) {
+						return post.url === results[result].ref;
+					})[0].title;
+				}
 
-			$resultsCount.append(results.length + (results.length === 1 ? ' result' : ' results') + ' for "' + query.get().join(' ') +'"');
+				$resultsCount.append(results.length + (results.length === 1 ? ' result' : ' results') + ' for "' + query.get() +'"');
 
-			$.each(results, function(i, result) {
-				totalScore+=result.score;
-			});
+				$.each(results, function(i, result) {
+					totalScore+=result.score;
+				});
 
-			$.each(results, function(i,result) {
-				percentOfTotal = result.score/totalScore;
+				$.each(results, function(i,result) {
+					percentOfTotal = result.score/totalScore;
 
-				$results.append('<li><a href="'+ site + result.url +'">'+result.title+'</a></li>');
-				$results.children('li').last().css({
-					'border-left': '20px solid '+utils.shade('#ffffff',-percentOfTotal)
+					$results.append('<li><a href="'+ site + result.url +'">'+result.title+'</a></li>');
+					$results.children('li').last().css({
+						'border-left': '20px solid '+utils.shade('#ffffff',-percentOfTotal)
+					});
 				});
 			});
-		});
 	}
 
-	return this;
-}(utils));
+	//return this;
+}(utils,Query));
 /**
  * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not as bright - 0.5.7
  * Copyright (C) 2014 Oliver Nightingale
