@@ -222,3 +222,25 @@ pre {
         }
     }
 }
+
+/*
+    Components
+*/
+.ellipsis {
+    text-align: center;
+}
+
+.note {
+    padding: 1em;
+    margin: 1em 0;
+    background: #fff8bf;
+    font-style: italic;
+    @include box-shadow(0,0,30px,$grey-color-light);
+
+    h1 {
+        background: darken(#fff8bf,5%);
+        color: $grey-color-dark;
+        padding: .25em;
+        font-size: 1.25em;
+    }
+}

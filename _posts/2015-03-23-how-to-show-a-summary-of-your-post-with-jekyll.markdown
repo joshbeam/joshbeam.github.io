@@ -15,7 +15,8 @@ Anyway, the solution I came up with is meant to allow me to control what part of
 
 If you didn't know, Jekyll uses <a href="http://liquidmarkup.org/">Liquid</a> for its templating.
 
-##Example:
+# Example:
+
 {% highlight html %}
 <!-- index.html -->
 <p class="post-excerpt">

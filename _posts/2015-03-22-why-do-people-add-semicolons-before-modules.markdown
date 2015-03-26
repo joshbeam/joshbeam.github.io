@@ -27,7 +27,8 @@ If you look closely enough at the above, you'll see the first <a href="http://be
 
 That means that when minified, it'll look like this:
 
-#The broken code:
+# The broken code:
+
 {% highlight javascript %}
 
 (function() {})()(function() {})();
@@ -42,7 +43,8 @@ So, we just add a `;` to the *beginning* of the module, and to the *end*. This a
 
 So, when we try doing the above example with semicolons **at the beginning *and* at the end**, and you minify the code, you get this instead:
 
-#The working code:
+# The working code:
+
 {% highlight javascript %}
 
 ;(function() {})();;(function() {})();

@@ -1,5 +1,7 @@
 ;(function(global,$) {
 
+	'use strict';
+
 	Query.prototype = {
 		set: function(val) {
 			this.q = val;

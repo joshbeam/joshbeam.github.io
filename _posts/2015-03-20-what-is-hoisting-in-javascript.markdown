@@ -6,13 +6,14 @@ categories: javascript
 author: Josh Beam
 comments: true
 ---
-##Hoisting is small concept that's pretty important
+
+# Hoisting is small concept that's pretty important
 
 <!--excerpt.start-->Hoisting is a concept that really defines a fundamental principle of JavaScript: **there's no such thing as *block scope***.<!--excerpt.end-->
 
 What does that mean? Well, we know there's a thing called *function scope*:
 
-#Function scope example
+# Function scope example
 {% highlight javascript %}
 // This area out here is our "global scope"
 
@@ -44,7 +45,7 @@ console.log(anotherVariable) // ==> 'anotherVariable'
 
 But how do we define block scope? In some other languages, it might be whatever is inside an `if` statement or a `for` loop. But that doesn't exist in JavaScript (well, with a caveat, which we'll go over in a later section):
 
-#If-statement example
+# If-statement example
 {% highlight javascript %}
 
 function testFunction(num) {
@@ -61,7 +62,7 @@ testFunction(4); // ==> 'less than five'
 
 The above example is super easy to understand. But let's try and do something else with it.
 
-#Trying to use block scope in JavaScript
+## Trying to use block scope in JavaScript
 {% highlight javascript %}
 
 function test() {
@@ -78,7 +79,7 @@ function test() {
 
 In the above example, if you didn't know any better and you thought JavaScript had block scope, you might assume that the variable `foo` only exists inside the `if` block. But it doesn't. In fact, even if the condition in the `if` statement evaluated to false, the variable `foo` would still exist to the *entire function*, but it just would not be set to `'bar'` (it would actually just remain `undefined`).
 
-#So what's hoisting then?
+# So what's hoisting then?
 
 Anything defined inside of a block is actually "hoisted" up to the function scope of whatever function you're in.
 
@@ -105,7 +106,7 @@ function test() {
 
 Anything you declare inside of a block (whether it's a function, a string, an array, or whatever), it is available to the entire scope. Blocks simply evaluate those variable to whatever you say, when a certain condition is met.
 
-#Best Practice
+# Best Practice
 In my opinion, **declaring all variables that will, or even just *might*, be later defined within your function should happen at the *top* of the function**. Some arguments against this might cite possible performance issues, but that might be going into the arguments of [micro-optimization vs readability][micro-optimization].
 
 > In my opinion, declaring all variables that will, or even just *might*, be later defined within your function should happen at the *top* of the function
@@ -148,7 +149,7 @@ function someFunction() {
 
 While this is a small, manufactured function that probably doesn't make sense and probably does a whole lot of nothing, in a lengthier function, someone else who reads the code might see a new variable definition, and have trouble understanding the context or the use. Additionally, all those variable declarations **will get hoisted to the top of the function anyway**. You'll still have three variables that are `undefined`, and only one that is set to `0`, but the code just happens to be more confusing.
 
-#Small caveat regarding `let`
+# Small caveat regarding `let`
 
 If you use the keyword `let` in place of `var`, everything I just wrote in this blog post is null and void. `let` allows you to declare and/or define a block-scoped variable (see the [MDN page][mdn-let], which says *"The let statement declares a block scope local variable, optionally initializing it to a value."*)
 

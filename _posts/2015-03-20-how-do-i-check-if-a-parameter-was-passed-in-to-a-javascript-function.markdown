@@ -7,7 +7,7 @@ author: Josh Beam
 comments: true
 ---
 
-##What's a parameter?
+# What's a parameter?
 A parameter can also be called an argument. It's the thing passed into a function that you do something with:
 
 {% highlight javascript %}
@@ -38,11 +38,11 @@ function test(x) {
 
 In the above example, we expect that if `x` "exists", then we'll do something; if not, we'll do something else. But checking for existence is a little more difficult than that. It has to do with truthiness.
 
-##The truth about truthiness
+# The truth about truthiness
 
 In `if` statements, JavaScript evaluates the statement to a boolean `true` or `false`, and acts accordingly. But when certain values are encountered, JavaScript "coerces" them to a boolean value. For example, these statements are all correct:
 
-#These are all true:
+## These are all true:
 {% highlight javascript %}
 	
 /*
@@ -58,7 +58,7 @@ In `if` statements, JavaScript evaluates the statement to a boolean `true` or `f
 
 There are plenty of other examples. However, you'll notice above that we're using the `==` operator. This is called the equality operator. It checks if two values are "equal", but to do this, JavaScript coerces the types.
 
-#These are all incorrect (they will evaluate to false):
+## These are all incorrect (they will evaluate to false):
 {% highlight javascript %}
 	
 /*
@@ -76,7 +76,7 @@ You'll notice a very subtle, but important, difference here: we're using the `==
 
 This brings us to a very important logical operator, the exlamation point `!` (also called the "not" operator). It gives you the opposite of whatever boolean value you give.
 
-#The "not" operator in action (the following statements are all true)
+## The "not" operator in action (the following statements are all true)
 {% highlight javascript %}
 	
 /*
@@ -92,7 +92,7 @@ This brings us to a very important logical operator, the exlamation point `!` (a
 
 You'll notice above that we are using the strict identity operator `===`. This is okay, because the `!` operator coerces the values on the left side of the equation to a boolean value. So really when we say `!1 === false`, we're actually saying `false === false`. In other words, `false` *does* have the identity of `false`.
 
-#The "double not" (or just two "not" operators &mdash; these are also all true)
+## The "double not" (or just two "not" operators &mdash; these are also all true)
 {% highlight javascript %}
 	
 /*
@@ -108,11 +108,11 @@ You'll notice above that we are using the strict identity operator `===`. This i
 
 The double not basically coerces each value into its equal boolean form. That's a weird way to say it. Think of it like this: `0 == false` is the same as `!!0 === false`.
 
-## So how do we check for existence?
+# So how do we check for existence?
 
 Well, it depends on how we want to define existence. Do we want to say that the parameter doesn't exist, if it is `null`,`undefined`,`0`,`false`, or some other non-truthy value? What if we want to pass in an empty string (`''`) as a value?
 
-#Bad example:
+## Bad example:
 {% highlight javascript %}
 function test(x) {
 	if(!!x) {
@@ -131,7 +131,7 @@ test(''); // logs nothing... uh oh
 
 So we can combine instead combine logical statements to check for our idea of existence:
 
-#Better example:
+## Better example:
 {% highlight javascript %}
 function test(x) {
 	if(!!x || x === '') {
@@ -156,7 +156,7 @@ function test(x) {
 
 {% endhighlight %}
 
-#Checking strictly for undefined values:
+## Checking strictly for undefined values:
 {% highlight javascript %}
 function test() {
 	if(a) {
@@ -177,7 +177,7 @@ function test() {
 
 In the above example, `a` **was never declared**. If a variable is never declared and you try to check for its existence, you'll get an error. But the `typeof` operator is the only operator (to my knowledge) that gets around this. If you check the type of a variable that was never declared, **you won't get an error, and your program can continue**.
 
-#Declared vs. defined
+## Declared vs. defined
 {% highlight javascript %}
 var a; // this is a declared variable that exists; its value is undefined
 
@@ -194,7 +194,7 @@ console.log(!!c); // ==> ReferenceError! Your program is dead.
 {% endhighlight %}
 
 
-##Best Practice
+# Best Practice
 
 I think in this circumstance, <!--excerpt.start-->**the best practice depends on however you define "existence" in the context of your specific function**. This means that you have to take into consideration the concepts of truthiness, the use of the `typeof` operator, the principle of declared vs. defined, etc.<!--excerpt.end-->
 

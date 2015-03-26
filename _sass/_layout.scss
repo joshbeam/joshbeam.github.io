@@ -283,8 +283,19 @@
 .post-content {
     margin-bottom: $spacing-unit;
 
+    h1 {
+        font-size: 38px;
+        border-bottom: 1px solid $grey-color-light;
+        margin-top: 1.5em;
+        position: relative;
+
+        @include media-query($on-laptop) {
+            font-size: 32px;
+        }        
+    }
+
     h2 {
-        font-size: 32px;
+        font-size: 34px;
 
         @include media-query($on-laptop) {
             font-size: 28px;
@@ -306,10 +317,19 @@
             font-size: 18px;
         }
     }
+
+    .jump-to-toc-link {
+        display: block;
+        font-size: 0.75em;
+        text-align: right;
+        margin: -10px 0 0 0;
+        padding: 0 0 10px 0;
+    }
+
 }
 
 .twitter-plug {
-    @include border-radius(10px);
+    @include box-shadow(0,0,30px,$grey-color-light);
     background: lighten($brand-color-complement,10%);
     padding: 1rem;
     margin: 2rem 0;

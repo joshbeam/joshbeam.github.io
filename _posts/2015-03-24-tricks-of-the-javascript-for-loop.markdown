@@ -19,11 +19,12 @@ for(var i = 0; i < arr.length; i++) {
 
 The code above obviously just increases `i`, starting at 0 and ending at the length of `arr`, which gives us the ability to access each of the items of `arr` by its index.
 
-##How do you declare the loop?
+# How do you declare the loop?
 
 There's frequently discussion on how to best write a `for` loop. There are some performance issues depending on how you write it (see this <a href="http://stackoverflow.com/a/6974417/2714730">StackOverflow question</a>), and I think a lot of it comes down to two things at the end: readability and personal style.
 
-#Several ways:
+## Several ways:
+
 {% highlight javascript %}
 /*
 	These will all ouput:
@@ -59,7 +60,7 @@ for(; i < len; i++) {
 
 There are many other ways to write the loops, but those are some of the more common ones.
 
-#Let's go over all of them, briefly
+## Let's go over all of them, briefly
 
 \#1 &mdash; The problem with this one is that it <a href="http://stackoverflow.com/a/6974417/2714730">might take some browsers longer</a> because we're **"resetting" some variables each time (i.e., each iteration, the loop checks the section where we define the limit, which is oftentimes the length of an array)**. In fact, **we can prove this**:
 
@@ -114,7 +115,7 @@ for(; i < len; i++) {
 }
 {% endhighlight %}
 
-#Why does #3 not throw an error?
+## Why does #3 not throw an error?
 
 The third one is strange, because we start it off with a `;` all by its lonesome. Well, I think this can be explained if we accept that the second part of the loop, the `i < // whatever` part, looks to define itself by `i`, wherever `i` might be. The first part, the part where we normally declare and define `i`, it just that: a part where we can initialize variables. In fact, we could initialize any variables we wanted. We could even initialize the limit, or length variable, and the array itself! Check it out:
 
@@ -144,28 +145,33 @@ for(/*initialization*/;/*condition*/;/*final-expression*/) {
 }
 {% endhighlight %}
 
-## So what have we learned?
+# So what have we learned?
+
 
 Well, we learned its easier when you call things by their names: `initialization`, `condition`, and `final-expression`.
 
-#Initialization lessons
+## Initialization lessons
+
 We can use this to declare anything we want, but we don't have to use it to declare anything
+
 {% highlight javascript %}
+
 var arr = [1,2,3,4,5], len = arr.length, i = 0;
 
 for(;i<len;i++) {
 	console.log(arr[i]);
 }
+
 {% endhighlight %}
 
 Additionally, although it may be a personal style issue, I think it's best to declare everything at the top of the function where the `for` loop resides, unless you need to redefine something in the `condition` section, such as the length of an array.
 
-#Condition lessons
+## Condition lessons
 When it comes to arrays, we're probably better off **caching the length of the array either in the `initialization` expression or at the top of the function in which the `for` loop resides**. This can give some performance benefits. However, we want to keep in mind that in a function where we add or remove things from an array, we might need to redefine the `condition` expression of the `for` loop every iteration.
 
-##Bonus!
+# Bonus!
 
-**Let's create a function that does a `for` loop for us.** It eliminates the scoping issues of variables like `i` and `len`, and it feels a whole lot cleaner. In fact, this function is a simplified version of something that the <a href="http://underscorejs.org/">Underscore.js</a> and <a href="http://jquery.com/">jQuery</a> libraries do (jQuery has <a href="https://api.jquery.com/jquery.each/">$.each</a>). You can even see a very complicated polyfill for <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Polyfill">Array.prototype.forEach on MDN's page</a>. Here's out simplified function:
+**Let's create a function that does a `for` loop for us.** It eliminates the scoping issues of variables like `i` and `len`, and it feels a whole lot cleaner. In fact, this function is a simplified version of something that the [Underscore.js][underscore] and [jQuery][jquery] libraries do (jQuery has [$.each][jqeach]). You can even see a very complicated polyfill for [Array.prototype.forEach on MDN's page][mdn-each-polyfill]. Here's out simplified function:
 
 {% highlight javascript %}
 function forEach(arr,fn) {
@@ -253,3 +259,8 @@ var myOtherModule = (function(utils) {
 {% endhighlight %}
 
 Boom! **Why all the strange semicolons? Why the weird function notation?** Check out my post on <a href="{{ "/javascript/snippet/2015/03/22/why-do-people-add-semicolons-before-modules.html" | prepend:site.url }}">weird semicolons</a> and on <a href="{{ "/javascript/2015/03/22/lightweight-dependency-modularization.html" | prepend:site.url }}">a simple way to modularize dependencies</a> for some answers to these question. Also, check out <a href="https://github.com/johnpapa/angular-styleguide">John Papa's AngularJS style guide</a>. It applies specifically to <a href="https://angularjs.org/">AngularJS</a>, but a lot of the principles translate well into vanilla JavaScript principles.
+
+[underscore]:			http://underscorejs.org/
+[jquery]:				http://jquery.com/
+[jqeach]:				https://api.jquery.com/jquery.each/
+[mdn-each-polyfill]:	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach#Polyfill

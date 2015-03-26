@@ -7,8 +7,7 @@ author: Josh Beam
 comments: true
 ---
 
-##A common approach
-
+# A common approach
 A common approach when utilizing the <a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/#modulepatternjavascript">module pattern</a> or something close to it, is to attach the end object to the `window`, or return the object inside some sort of local variable to create a namespace for your module.
 
 So you might end up having something like this:
@@ -51,7 +50,7 @@ Of course, the obvious problems with this are:
 
 ... and probably several other I'm forgetting about. There are other ways to do this (a popular library like <a href="http://requirejs.org/">RequireJS</a>, for example), but in my case, I wanted to try to use a basic object that would be attached to the `window`, and have all of my dependencies attach to that global object.
 
-## A global dependencies object
+# A global dependencies object
 
 For <a href="http://github.com/joshbeam/angular-state-manager">angular-state-manager</a>, I utilized a global object called `stateManagerDependencies`, or something along that line, to attach all of my modules to that would eventually go into the main `stateManager` module.
 
@@ -76,7 +75,7 @@ For <a href="http://github.com/joshbeam/angular-state-manager">angular-state-man
 
 {% endhighlight %}
 
-# Obvious downsides to this approach
+## Obvious downsides to this approach
 
 1. You're still attaching some strangely named global object to the `window`
 2. In each module that depends on the `dependencies` object, there is no error-checking or method to list what modules are available inside the `dependencies` object (a possible fix for this is to simply implement some of those methods, for example: `.list()`, or `.checkFor()`, etc.)

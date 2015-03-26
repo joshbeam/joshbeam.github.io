@@ -4,7 +4,7 @@
   {% for post in site.posts %}
     {
       "title"    : "{{ post.title | escape }}",
-      "category" : "{{ post.categories | join: ', ' }}",
+      "category" : "{{ post.categories | join: ' ' }}",
       "content"	 : "{{post.content | strip_html | strip_newlines | remove:  "	" | remove: """}}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "date"     : "{{ post.date }}"
