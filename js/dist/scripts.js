@@ -9303,7 +9303,7 @@ $(function(utils,Query) {
 				results = searchIndex.search(query.get());
 
 				// add the title of each post into each result, too (this doesn't come standard with lunr.js)
-				for(result in results) {
+				for(var result in results) {
 					results[result].title = data.filter(function(post) {
 						return post.url === results[result].ref;
 					})[0].title;
