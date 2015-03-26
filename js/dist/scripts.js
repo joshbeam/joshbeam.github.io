@@ -9301,7 +9301,7 @@ $(function(utils,Query) {
 
 				// search for the query and store the results as an array
 				results = searchIndex.search(query.get());
-
+				
 				// add the title of each post into each result, too (this doesn't come standard with lunr.js)
 				for(var result in results) {
 					results[result].title = data.filter(function(post) {
@@ -9322,7 +9322,7 @@ $(function(utils,Query) {
 				$.each(results, function(i,result) {
 					percentOfTotal = result.score/totalScore;
 
-					$results.append('<li><a href="'+ site + result.url +'">'+result.title+'</a></li>');
+					$results.append('<li><a href="'+ site + result.ref +'">'+result.title+'</a></li>');
 					$results.children('li').last().css({
 						'border-left': '20px solid '+utils.shade('#ffffff',-percentOfTotal)
 					});
