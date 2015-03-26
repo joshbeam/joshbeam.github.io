@@ -4,7 +4,9 @@ comments: false
 title: Archive
 permalink: /archive/
 ---
+
 {% include total-posts.html %}
+
 <ul class="unstyled archive-list">
 {% for post in site.posts %}
 	<li>

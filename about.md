@@ -7,15 +7,17 @@ comments: false
 
 Josh is a full-stack JavaScript enthusiast developer with 3+ years experience developing applications using technologies like AngularJS, MongoDB, Node.js, and HTML/CSS.
 
-##Around the web
+# Around the web
 
-#Profiles
+## Profiles
+
 <ul class="unstyled">
 	<li><a href="http://careers.stackoverflow.com/joshbeam">StackOverflow Careers 2.0</a></li>
 	<li><a href="https://github.com/joshbeam/">GitHub</a></li>
 </ul>
 
-#Projects
+## Projects
+
 <dl>
 	<dt><a href="http://joshbeam.github.io/Basket">Basket</a></dt>
 	<dd>A demo app designed mobile first to act as a shopping list manager for families, friends, etc. Designed with my AngularJS plug-in <a href="http://github.com/joshbeam/angular-state-manager">angular-state-manager</a></dd>
