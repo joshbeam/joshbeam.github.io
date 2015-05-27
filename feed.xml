@@ -6,15 +6,15 @@
 </description>
     <link>http://joshbeam.github.io/</link>
     <atom:link href="http://joshbeam.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 26 May 2015 19:38:41 -0500</pubDate>
-    <lastBuildDate>Tue, 26 May 2015 19:38:41 -0500</lastBuildDate>
+    <pubDate>Tue, 26 May 2015 19:41:55 -0500</pubDate>
+    <lastBuildDate>Tue, 26 May 2015 19:41:55 -0500</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>
         <title>Modern Looking CSS Toggle Switch</title>
         <description>&lt;!--excerpt.start--&gt;
-
-&lt;!--excerpt.end--&gt;
+&lt;p&gt;Create a nice, modern toggle switch that works by just changing its padding and adding a transition (all it takes is a JavaScript click handler to add or remove a class)!
+&lt;!--excerpt.end--&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a class=&quot;jsbin-embed&quot; href=&quot;http://jsbin.com/guduco/1/embed?output&quot;&gt;JS Bin&lt;/a&gt;&lt;script src=&quot;http://static.jsbin.com/js/embed.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
